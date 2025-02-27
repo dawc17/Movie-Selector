@@ -6,11 +6,10 @@ interface Movie {
   title: string;
   release_date: string;
   poster_path: string;
-  // e.g. posterUrl?: string;
 }
 
 interface CardProps {
-  movie: Movie; // <--- Now we expect a single "movie" prop
+  movie: Movie;
 }
 
 function MovieCard({ movie }: CardProps) {
@@ -26,7 +25,6 @@ function MovieCard({ movie }: CardProps) {
   return (
     <div className="movie-card">
       <div className="movie-poster">
-        {/* If your movie object has a poster URL, use it below */}
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}}`}
           alt={movie.title}
