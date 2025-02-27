@@ -37,17 +37,14 @@ function Home() {
         </button>
       </form>
       <div className="movies-grid">
-        {movies.map(
-          (movie) =>
-            movie.title.toLowerCase().startsWith(searchQuery) && (
-              <MovieCard
-                key={movie.id}
-                movieUrl={`url_to_poster_${movie.id}`}
-                movieTitle={movie.title}
-                movieReleaseDate={movie.releaseDate}
-              />
-            )
-        )}
+        {movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            movieUrl={`url_to_poster_${movie.id}`}
+            movieTitle={movie.title}
+            movieReleaseDate={movie.releaseDate}
+          />
+        ))}
       </div>
     </div>
   );
