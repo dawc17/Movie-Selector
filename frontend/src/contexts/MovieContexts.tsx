@@ -9,10 +9,8 @@ import {
 interface Movie {
   id: string;
   title: string;
-  // Add other movie properties here
 }
 
-// Define the context value type
 interface MovieContextValue {
   favorites: Movie[];
   addToFavorites: (movie: Movie) => void;
@@ -20,7 +18,6 @@ interface MovieContextValue {
   isFavorite: (movieId: string) => boolean;
 }
 
-// Provide a default value for the context
 const defaultValue: MovieContextValue = {
   favorites: [],
   addToFavorites: () => {},
@@ -33,13 +30,9 @@ const MovieContext = createContext<MovieContextValue>(defaultValue);
 export const useMovieContext = () => useContext(MovieContext);
 
 export const MovieProvider = ({ children }: { children: ReactNode }) => {
-  const [favorites, setFavorites] = useState<Movie[]>([]);
-
-  useEffect(() => {
-    const storedFavs = localStorage.getItem("favorites");
-
-    if (storedFavs) setFavorites(JSON.parse(storedFavs));
-  }, []);
+  const [favorites, setFavorites] = useState<Movie[]>(() => {
+    return JSON.parse(localStorage.getItem("favorites")) || [];
+  });
 
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
