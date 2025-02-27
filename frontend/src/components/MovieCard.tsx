@@ -1,3 +1,5 @@
+import "../css/MovieCard.css";
+
 interface CardProps {
   movieUrl: string;
   movieTitle: string;
