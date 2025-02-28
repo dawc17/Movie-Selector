@@ -41,6 +41,9 @@ function MovieCard({ movie }: CardProps) {
       <div className="movie-info">
         <h3>{movie.title}</h3>
         <p>{movie.release_date?.split("-")[0]}</p>
+        <a href={`https://pstream.org/browse/${movie.title}`} target="_blank">
+          <button className="watch-button">Watch movie</button>
+        </a>
       </div>
     </div>
   );
